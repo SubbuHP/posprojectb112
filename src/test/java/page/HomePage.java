@@ -10,25 +10,46 @@ import org.testng.Reporter;
 
 public class HomePage {
 
-	@FindBy(xpath="//h3[starts-with(text(),'Welcome to OSPOS')]")
+	@FindBy(xpath="//h3[starts-with(text(),'Welcome to OSPOS,')]")
     private WebElement welcomeMessage;
+	
+
+	@FindBy(xpath="//a[text()='Logout']")
+    private WebElement logoutBTN;
+	
 	
 	public HomePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
 	
+//	public boolean verifyHomePageIsDisplayed(WebDriverWait wait)
+//	{
+//		try
+//		{
+//			wait.until(ExpectedConditions.visibilityOf(welcomeMessage));
+//			Reporter.log("Home Page is Displayed",true);
+//			return true;
+//		}
+//		catch(Exception e)
+//		{
+//			Reporter.log("Home Page is Not Displayed",true);
+//			return false;
+//		}
+//		
+//	}
+	
 	public boolean verifyHomePageIsDisplayed(WebDriverWait wait)
 	{
 		try
 		{
-			wait.until(ExpectedConditions.visibilityOf(welcomeMessage));
-			Reporter.log("Home Page is Displayes",true);
+			wait.until(ExpectedConditions.visibilityOf(logoutBTN));
+			Reporter.log("Home Page is Displayed",true);
 			return true;
 		}
 		catch(Exception e)
 		{
-			Reporter.log("Home Page is Not Displayes",true);
+			Reporter.log("Home Page is Not Displayed",true);
 			return false;
 		}
 		
